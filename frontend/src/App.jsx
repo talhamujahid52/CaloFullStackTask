@@ -41,7 +41,8 @@ const App = () => {
       return response.json();
     },
     onSuccess: (data) => {
-      console.log("Data submitted successfully:", data);
+      alert("Job is created Successfully with id: ", data.id);
+      console.log("Data submitted successfully:");
     },
     onError: (error) => {
       console.error("Error submitting data:", error);
@@ -79,9 +80,9 @@ const App = () => {
         </h1>
         <button
           onClick={handleSubmit}
-          disabled={isLoading}
-          className={`w-full bg-blue-500 text-white font-semibold py-2 rounded-md transition duration-300 
-                        hover:bg-blue-600 ${
+          disabled={mutation.isPending}
+          className={`w-full bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 
+                        hover:bg-blue-500 ${
                           isLoading && "opacity-50 cursor-not-allowed"
                         } mb-4`}
         >

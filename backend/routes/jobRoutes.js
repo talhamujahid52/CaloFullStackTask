@@ -6,8 +6,8 @@ const {
   getJobById,
 } = require("../controllers/jobController");
 
-const jobRoutes = (io) => {
-  router.post("/jobs", (req, res) => createJob(req, res, io)); // Pass io here
+const jobRoutes = (io, jobQueue) => {
+  router.post("/jobs", (req, res) => createJob(req, res, io, jobQueue)); // Pass io here
   router.get("/jobs", (req, res) => getAllJobs(req, res, io)); // Pass io here
   router.get("/jobs/:id", (req, res) => getJobById(req, res, io)); // Pass io here
 

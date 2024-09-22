@@ -1,7 +1,6 @@
-const { getJobs, AddJob, UpdateJob } = require("../model/jobModel");
-const { fetchRandomImage, getRandomDelay } = require("../utils");
+const { getJobs, AddJob } = require("../model/jobModel");
 
-const createJob = async (req, res, io) => {
+const createJob = async (req, res, io, jobQueue) => {
   try {
     const jobs = getJobs();
     const jobId = jobs.length + 1;
@@ -14,19 +13,7 @@ const createJob = async (req, res, io) => {
     };
 
     AddJob(newJob);
-
-    setTimeout(async () => {
-      const jobsList = getJobs();
-      const imageUrl = await fetchRandomImage();
-      const jobToUpdate = jobsList.find((item) => item.id === newJob.id);
-
-      jobToUpdate.status = "resolved";
-      jobToUpdate.result = imageUrl;
-      jobToUpdate.resolvedAt = new Date().toISOString();
-
-      UpdateJob(jobsList);
-      io.emit("jobResolved", { message: "Job Resolved Successfully" });
-    }, getRandomDelay());
+    await jobQueue.add({ jobId });
 
     res.status(201).json({ id: jobId });
   } catch (err) {
