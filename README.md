@@ -30,7 +30,7 @@ This project consists of a frontend and a backend that require Redis to run.
 3. ```bash
    npm start
 
-### Step 2: Setup Frontend (React Js)
+### Step 3: Setup Frontend (React Js)
 
 1. ```bash
    cd ../frontend
