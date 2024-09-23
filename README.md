@@ -24,7 +24,7 @@ This project consists of a frontend and a backend that require Redis to run.
 ### Step 2: Setup Backend (Node Js)
 
 1. ```bash
-   cd backed
+   cd backend
 2. ```bash
    npm install
 3. ```bash
@@ -38,3 +38,18 @@ This project consists of a frontend and a backend that require Redis to run.
    npm install
 3. ```bash
    npm run dev
+
+### Estimated Time Spent
+
+#### Backend
+- **Initial Project Setup + Server Setup + Socket.io:** 2 hours
+- **Defining Routes + Logic Implementation:** 4 hours
+- **Job Queue Implementation + Redis Setup:** 2 hours
+
+#### Frontend
+- **Initial Project Setup + Design:** 2 hours
+- **API Integration:** 2 hours
+
+
+
+   
